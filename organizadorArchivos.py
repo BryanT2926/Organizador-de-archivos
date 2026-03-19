@@ -93,20 +93,16 @@ def organizar(carpeta: Path, preview: bool, log_cb, prog_cb):
     for i, archivo in enumerate(sorted(archivos), 1):
         prog_cb(i, total)
 
-        # 🔍 DEBUG
         log_cb(f"🔍 Procesando: {archivo.name}", "info")
 
-        # 🚫 Ignorar tu propio script
         if archivo.suffix == ".py":
             continue
 
-        # 🧠 Detectar extensión (maneja mayúsculas y sin extensión)
         ext = archivo.suffix.lower() if archivo.suffix else ""
 
         if ext == "":
             log_cb(f"📂 Sin extensión: {archivo.name}", "warn")
 
-        # 🔁 Duplicados
         try:
             h = hash_archivo(archivo)
         except Exception as e:
@@ -127,13 +123,13 @@ def organizar(carpeta: Path, preview: bool, log_cb, prog_cb):
         if h:
             hashes[h] = archivo
 
-        # 📂 Categoría (fallback automático)
+        # Categoría (fallback automático)
         cat = detectar_categoria(ext)
         fecha = datetime.fromtimestamp(archivo.stat().st_mtime).strftime("%Y/%m - %B")
         dest_dir = carpeta / cat / fecha
         dest = nombre_sin_colision(dest_dir / archivo.name)
 
-        # 🚚 Mover archivo con control de errores
+        # Mover archivo con control de errores
         try:
             if not preview:
                 dest_dir.mkdir(parents=True, exist_ok=True)

@@ -12,7 +12,7 @@ Aplicación desarrollada en Python que permite organizar archivos automáticamen
 
 ## 🖥️ Interfaz
 
-(Aquí agrega una captura de pantalla de tu GUI)
+![alt text](imagenes/image.png)
 
 ## 🛠️ Tecnologías utilizadas
 
@@ -25,8 +25,6 @@ OrganizadorArchivos.exe <-- programa ejecutable
 OrganizadorArchivos.py
 README.md
 imagenes/
-
-![alt text](imagenes/image.png)
 
 ## ▶️ Cómo usar (opción 1 - ejecutable)
 
